@@ -2,6 +2,7 @@
 
 from __future__ import print_function
 import sys
+import time
 import getpass
 import subprocess
 import os
@@ -71,7 +72,13 @@ def work():
 
     rehash()
 
-def play():
+def play(t=60):
+    print('Waiting for 60s before "play". Ctrl-C to stay in "work"'.format(t))
+    try:
+        time.sleep(t)
+    except KeyboardInterrupt:
+        exit_error('Switching to "play" interrupted')
+
     hosts_file_handle = open(hosts_file, "r+")
     lines = hosts_file_handle.readlines()
 
