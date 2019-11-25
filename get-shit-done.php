@@ -19,7 +19,7 @@ $uname = trim(`uname`);
 if ( $uname == 'Linux' ) {
     $restartNetworkingCommand = '/etc/init.d/networking restart';
 } elseif ( $uname == 'Darwin' ) {
-    $restartNetworkingCommand = 'dscacheutil -flushcache';
+    $restartNetworkingCommand = 'killall -HUP mDNSResponder'
 } else {
     $message = '"Please contribute DNS cache flush command on GitHub."';
     $restartNetworkingCommand = "echo $message";

@@ -164,7 +164,7 @@ uname=$(trim `uname`)
 if [ "Linux" == $uname ]; then
     restart_network="/etc/init.d/networking restart"
 elif [ "Darwin" == $uname ]; then
-    restart_network="dscacheutil -flushcache"
+    restart_network="killall -HUP mDNSResponder"
 else
     message="Please, contribute DNS cache flush command on GitHub"
     restart_network="echo $message"

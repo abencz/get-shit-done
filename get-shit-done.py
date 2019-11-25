@@ -17,7 +17,7 @@ ini_global = './sites.ini'
 if "linux" in sys.platform:
     restart_network_command = ["/etc/init.d/networking", "restart"]
 elif "darwin" in sys.platform:
-    restart_network_command = ["dscacheutil", "-flushcache"]
+    restart_network_command = ["killall", "-HUP", "mDNSResponder"]
 elif "win32" in sys.platform:
     restart_network_command = ["ipconfig", "/flushdns"]
 else:
